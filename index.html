@@ -47,6 +47,16 @@
 
   <title>Evyron — Création de Sites Web Sur Mesure</title>
 
+  <!-- Google Analytics (consent mode v2) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JBZJ6QGD5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0JBZJ6QGD5', { anonymize_ip: true });
+  </script>
+
   <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc"></script>
 
@@ -1244,12 +1254,17 @@
       <div class="date">Dernière mise à jour : 26 août 2026</div>
       <p>Cette politique explique comment Evyron utilise les cookies sur evyron.fr.</p>
       <h2>1. Cookies utilisés</h2>
-      <p>Notre site utilise uniquement un cookie technique :</p>
+      <p>Notre site utilise les cookies suivants :</p>
       <ul>
         <li><strong>Cookie de consentement</strong> (clé : <em>rgpd</em>) : stocke votre choix. Durée : 1 an.</li>
+        <li><strong>Google Analytics</strong> (analyses d'audience) : uniquement si vous acceptez les cookies. Durée : 14 mois. <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">En savoir plus</a></li>
       </ul>
-      <p><strong>Aucun cookie de tracking, publicité ou analyse n'est utilisé.</strong></p>
-      <h2>2. Gestion de vos choix</h2>
+      <h2>2. Finalité des cookies</h2>
+      <ul>
+        <li><strong>Consentement</strong> : mémoriser votre choix de consentement</li>
+        <li><strong>Analytics</strong> : mesurer l'audience du site de manière anonymisée (uniquement après acceptation)</li>
+      </ul>
+      <h2>3. Gestion de vos choix</h2>
       <p>Vous pouvez modifier votre choix en supprimant les cookies de votre navigateur.</p>
       <h2>3. Cookies tiers</h2>
       <p>Google Fonts peut déposer des cookies de performance. Nous n'avons pas de contrôle sur ces cookies tiers.</p>
@@ -1411,6 +1426,7 @@
     function ac() {
       localStorage.setItem("rgpd", "accepted");
       document.getElementById("cb").classList.add("hidden");
+      gtag('consent', 'update', { analytics_storage: 'granted' });
     }
     function dc() {
       localStorage.setItem("rgpd", "refused");

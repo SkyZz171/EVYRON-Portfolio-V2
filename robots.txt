@@ -4,5 +4,9 @@ Disallow: /mentions-legales.html
 Disallow: /politique-de-confidentialite.html
 Disallow: /cgv.html
 Disallow: /politique-de-cookies.html
+Disallow: /googledacbd4164acedbd8.html
+
+User-agent: Googlebot
+Allow: /
 
 Sitemap: https://evyron.fr/sitemap.xml

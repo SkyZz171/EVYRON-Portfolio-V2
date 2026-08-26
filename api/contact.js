@@ -4,6 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const ALLOWED_ORIGINS = ['https://evyron.fr', 'https://www.evyron.fr'];
 const TO = process.env.CONTACT_EMAIL || 'contact@evyron.fr';
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 
 export default async function handler(req, res) {
   // --- CORS ---
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   // --- Parse body ---
-  const { nom, email, entreprise, budget, projet, website } = req.body || {};
+  const { nom, email, entreprise, budget, projet, website, recaptchaToken } = req.body || {};
 
   if (!nom || !email || !projet) {
     return res.status(422).json({
@@ -41,6 +42,23 @@ export default async function handler(req, res) {
   // --- Anti-spam: honeypot ---
   if (website) {
     return res.status(200).json({ ok: true });
+  }
+
+  // --- Verify reCAPTCHA ---
+  if (RECAPTCHA_SECRET && recaptchaToken) {
+    try {
+      const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyData.success || verifyData.score < 0.5) {
+        return res.status(403).json({ ok: false, error: 'Validation anti-spam échouée.' });
+      }
+    } catch (err) {
+      console.error('reCAPTCHA error:', err);
+    }
   }
 
   // --- Build email content ---

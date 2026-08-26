@@ -47,6 +47,9 @@
 
   <title>Evyron — Création de Sites Web Sur Mesure</title>
 
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -1321,6 +1324,7 @@
 
     // --- Form Submit (API backend) ---
     var API_URL = '/api/contact';
+    var RECAPTCHA_KEY = '6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc';
     function handleSubmit(ev) {
       ev.preventDefault();
       var form = ev.target;
@@ -1336,29 +1340,35 @@
         entreprise: fd.get('entreprise') || '',
         budget:     fd.get('budget') || '',
         projet:     fd.get('projet') || '',
-        website:    fd.get('website') || ''
+        website:    fd.get('website') || '',
+        recaptchaToken: ''
       };
 
-      fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.ok) {
-          openPageModal('merci');
-          form.reset();
-        } else {
-          alert(data.error || 'Erreur lors de l\'envoi.');
-        }
-      })
-      .catch(function() {
-        alert('Erreur réseau. Veuillez réessayer.');
-      })
-      .finally(function() {
-        btn.textContent = original;
-        btn.disabled = false;
+      grecaptcha.ready(function() {
+        grecaptcha.execute(RECAPTCHA_KEY, {action: 'contact'}).then(function(token) {
+          payload.recaptchaToken = token;
+          return fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' }
+          });
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.ok) {
+            openPageModal('merci');
+            form.reset();
+          } else {
+            alert(data.error || 'Erreur lors de l\'envoi.');
+          }
+        })
+        .catch(function() {
+          alert('Erreur réseau. Veuillez réessayer.');
+        })
+        .finally(function() {
+          btn.textContent = original;
+          btn.disabled = false;
+        });
       });
       return false;
     }

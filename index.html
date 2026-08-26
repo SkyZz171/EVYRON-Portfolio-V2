@@ -1,47 +1,145 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Evyron est une agence de création web sur mesure basée à Paris. Nous concevons des sites web performants, sur mesure et optimisés SEO pour propulser votre entreprise. Design UI/UX, développement React, Next.js, e-commerce.">
   <meta name="keywords" content="agence web paris, création site web, développement web sur mesure, agence digitale, site e-commerce, React, Next.js, design UI/UX, SEO, freelance web designer">
   <meta name="author" content="Evyron">
+  <meta name="theme-color" content="#ffffff">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://evyron.fr/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Evyron — Création de Sites Web Sur Mesure">
-  <meta property="og:description" content="Agence de création web sur mesure à Paris. Sites performants, design élégant, optimisés SEO.">
+  <meta property="og:title" content="Evyron — Création de Sites Web Sur Mesure | Agence Web Paris">
+  <meta property="og:description" content="Agence de création web sur mesure à Paris. Nous créons des sites performants, sur mesure et optimisés SEO pour propulser votre entreprise.">
   <meta property="og:url" content="https://evyron.fr/">
   <meta property="og:site_name" content="Evyron">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://evyron.fr/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Evyron — Agence de création web sur mesure à Paris">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Evyron — Création de Sites Web Sur Mesure">
+  <meta name="twitter:title" content="Evyron — Création de Sites Web Sur Mesure | Agence Web Paris">
   <meta name="twitter:description" content="Agence de création web sur mesure à Paris. Sites performants, design élégant, optimisés SEO.">
+  <meta name="twitter:image" content="https://evyron.fr/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>E</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23111'/><text x='50' y='70' text-anchor='middle' fill='white' font-size='60' font-family='serif'>E</text></svg>">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
     "name": "Evyron",
-    "description": "Agence de création web sur mesure basée à Paris.",
+    "description": "Agence de création web sur mesure basée à Paris. Sites performants, design élégant, optimisés SEO.",
     "url": "https://evyron.fr",
-    "telephone": "0766792267",
+    "telephone": "+33766792267",
     "email": "contact@evyron.fr",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Paris",
+      "addressRegion": "Île-de-France",
       "addressCountry": "FR"
     },
-    "areaServed": "Worldwide",
-    "serviceType": ["Web Design", "Web Development", "SEO", "UI/UX Design", "E-commerce"]
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.8566,
+      "longitude": 2.3522
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    },
+    "serviceType": ["Création de site web", "Design UI/UX", "Développement web", "SEO", "E-commerce"],
+    "priceRange": "$$$$",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "sameAs": [],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services web",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Design UI/UX",
+            "description": "Interfaces intuitives et esthétiques pensées pour maximiser l'engagement et la conversion."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Développement Web",
+            "description": "Sites vitrines, e-commerce ou applications complexes avec React, Next.js et Node."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO & Performance",
+            "description": "Sites ultra-rapides et optimisés pour le référencement naturel."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Stratégie Digitale",
+            "description": "Conseil stratégique pour une présence digitale impactante."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Combien coûte la création d'un site web ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le coût dépend de la complexité du projet. Un site vitrine commence à 5 000 €, un site e-commerce à 10 000 €. Contactez-nous pour un devis gratuit et personnalisé."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps faut-il pour créer un site web ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Un site vitrine est généralement livré en 4 à 6 semaines. Un projet e-commerce ou sur mesure peut prendre 8 à 12 semaines selon les fonctionnalités."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Travaillez-vous avec des clients en dehors de Paris ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, nous travaillons avec des clients partout en France et à l'international. Nos échanges se font en visioconférence et par email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Proposez-vous un suivi après la mise en ligne ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, nous offrons un accompagnement post-lancement incluant maintenance, mises à jour de sécurité et support technique continu."
+        }
+      }
+    ]
   }
   </script>
 
@@ -485,6 +583,39 @@
       line-height: 1.7;
     }
 
+    /* --- FAQ --- */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--br);
+      padding: 1.5rem 0;
+    }
+    .faq-item summary {
+      font-family: Playfair Display, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      cursor: pointer;
+      letter-spacing: -.01em;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      font-weight: 300;
+      transition: transform .3s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p {
+      color: var(--tx2);
+      font-size: .9rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-top: 1rem;
+    }
+
     /* --- Contact --- */
     .ct-grid {
       display: grid;
@@ -918,6 +1049,7 @@
       <li><a href="#about">À propos</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#contact" class="nv-cta">Projeter</a>
     <button class="nv-menu" id="hm" aria-label="Menu">
@@ -933,6 +1065,7 @@
     <a href="#about" onclick="cm()">À propos</a>
     <a href="#process" onclick="cm()">Process</a>
     <a href="#contact" onclick="cm()">Contact</a>
+    <a href="#faq" onclick="cm()">FAQ</a>
   </div>
 
   <main>
@@ -1058,6 +1191,33 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="sec" id="faq">
+      <div class="sec-h rv">
+        <div class="sec-nm">05 — Questions fréquentes</div>
+        <h2 class="sec-t">Vous avez des questions ?</h2>
+        <div class="sec-line"></div>
+      </div>
+      <div class="faq-list rv">
+        <details class="faq-item">
+          <summary>Combien coûte la création d'un site web ?</summary>
+          <p>Le coût dépend de la complexité du projet. Un site vitrine commence à 5 000 €, un site e-commerce à 10 000 €. Contactez-nous pour un devis gratuit et personnalisé.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Combien de temps faut-il pour créer un site web ?</summary>
+          <p>Un site vitrine est généralement livré en 4 à 6 semaines. Un projet e-commerce ou sur mesure peut prendre 8 à 12 semaines selon les fonctionnalités.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Travaillez-vous avec des clients en dehors de Paris ?</summary>
+          <p>Oui, nous travaillons avec des clients partout en France et à l'international. Nos échanges se font en visioconférence et par email.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Proposez-vous un suivi après la mise en ligne ?</summary>
+          <p>Oui, nous offrons un accompagnement post-lancement incluant maintenance, mises à jour de sécurité et support technique continu.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section class="sec" id="contact">
       <div class="sec-h rv">
@@ -1135,6 +1295,7 @@
         <a href="#services">Services</a>
         <a href="#about">À propos</a>
         <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div class="ft-legal">
         <a href="#" onclick="openLegal('mentions')">Mentions légales</a>

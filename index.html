@@ -34,7 +34,7 @@
     "description": "Agence de création web sur mesure basée à Paris.",
     "url": "https://evyron.fr",
     "telephone": "0766792267",
-    "email": "contact@evyron.com",
+    "email": "contact@evyron.fr",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Paris",
@@ -1056,7 +1056,7 @@
           <h3>Coordonnées</h3>
           <p>Nous répondons sous 24h.</p>
           <div class="ct-d">
-            <a href="mailto:contact@evyron.com">contact@evyron.com</a>
+            <a href="mailto:contact@evyron.fr">contact@evyron.fr</a>
           </div>
           <div class="ct-d">
             <a href="tel:0766792267">07 66 79 22 67</a>
@@ -1067,25 +1067,25 @@
           <div class="ct-note">Consultation gratuite</div>
         </div>
         <div class="ct-r rv">
-          <form class="ct-ff" onsubmit="hs(event)">
+          <form class="ct-ff" id="contact-form" onsubmit="return handleSubmit(event)">
             <div class="fr">
               <div class="fg">
                 <label>Nom complet</label>
-                <input type="text" placeholder="Jean Dupont" required>
+                <input type="text" name="nom" placeholder="Jean Dupont" required>
               </div>
               <div class="fg">
                 <label>Email</label>
-                <input type="email" placeholder="jean@entreprise.com" required>
+                <input type="email" name="email" placeholder="jean@entreprise.com" required>
               </div>
             </div>
             <div class="fr">
               <div class="fg">
                 <label>Entreprise</label>
-                <input type="text" placeholder="Votre entreprise">
+                <input type="text" name="entreprise" placeholder="Votre entreprise">
               </div>
               <div class="fg">
                 <label>Budget estimé</label>
-                <select>
+                <select name="budget">
                   <option value="">Sélectionnez...</option>
                   <option>5 000 € — 10 000 €</option>
                   <option>10 000 € — 25 000 €</option>
@@ -1096,11 +1096,15 @@
             </div>
             <div class="fg">
               <label>Décrivez votre projet</label>
-              <textarea placeholder="Parlez-nous de votre projet..." required></textarea>
+              <textarea name="projet" placeholder="Parlez-nous de votre projet..." required></textarea>
             </div>
             <div class="consent">
               <input type="checkbox" id="rgpd" required>
               <label for="rgpd">J'accepte que mes données soient traitées conformément à la <a href="#" onclick="openLegal('confidentialite')">politique de confidentialité</a>. Les données collectées sont uniquement utilisées pour le traitement de ma demande.</label>
+            </div>
+
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
             </div>
             <button type="submit" class="btn btn-d" style="margin-top:.5rem">Envoyer le message</button>
           </form>
@@ -1137,9 +1141,9 @@
       <h1>Mentions Légales</h1>
       <div class="date">Dernière mise à jour : 26 août 2026</div>
       <h2>1. Éditeur du site</h2>
-      <p><strong>Evyron</strong><br>Agence de création web sur mesure<br>Paris, France<br>contact@evyron.com<br>07 66 79 22 67</p>
+      <p><strong>Evyron</strong><br>Agence de création web sur mesure<br>Paris, France<br>contact@evyron.fr<br>07 66 79 22 67</p>
       <h2>2. Hébergeur</h2>
-      <p><strong>OVH Cloud</strong><br>2 rue Kellermann<br>59100 Roubaix, France<br>www.ovhcloud.com</p>
+      <p><strong>Vercel Inc.</strong><br>340 S Lemon Ave #4133<br>Walnut, CA 91789, États-Unis<br>vercel.com</p>
       <h2>3. Propriété intellectuelle</h2>
       <p>L'ensemble du contenu de ce site est la propriété exclusive d'Evyron et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
       <p>Toute reproduction, représentation, modification, publication ou dénaturation du site est interdite sans autorisation préalable écrite d'Evyron.</p>
@@ -1160,7 +1164,7 @@
       <div class="date">Dernière mise à jour : 26 août 2026</div>
       <p>Cette politique explique comment Evyron collecte, utilise et protège vos données personnelles conformément au RGPD et à la loi Informatique et Libertés.</p>
       <h2>1. Responsable du traitement</h2>
-      <p><strong>Evyron</strong><br>Paris, France<br>contact@evyron.com<br>07 66 79 22 67</p>
+      <p><strong>Evyron</strong><br>Paris, France<br>contact@evyron.fr<br>07 66 79 22 67</p>
       <h2>2. Données collectées</h2>
       <p>Lors de l'utilisation du formulaire de contact :</p>
       <ul>
@@ -1191,7 +1195,7 @@
         <li><strong>Droit d'opposition</strong> : vous opposer au traitement</li>
         <li><strong>Droit à la portabilité</strong> : recevoir vos données</li>
       </ul>
-      <p>Exercer vos droits : <a href="mailto:contact@evyron.com">contact@evyron.com</a></p>
+      <p>Exercer vos droits : <a href="mailto:contact@evyron.fr">contact@evyron.fr</a></p>
       <h2>7. Réclamation</h2>
       <p>Vous pouvez introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
     </div>
@@ -1243,7 +1247,7 @@
       <h2>3. Cookies tiers</h2>
       <p>Google Fonts peut déposer des cookies de performance. Nous n'avons pas de contrôle sur ces cookies tiers.</p>
       <h2>4. Vos droits</h2>
-      <p>Contactez-nous à : <a href="mailto:contact@evyron.com">contact@evyron.com</a></p>
+      <p>Contactez-nous à : <a href="mailto:contact@evyron.fr">contact@evyron.fr</a></p>
     </div>
   </div>
 
@@ -1315,10 +1319,48 @@
     }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
     rv.forEach(function (el) { obs.observe(el); });
 
-    // --- Form Submit ---
-    function hs(ev) {
+    // --- Form Submit (API backend) ---
+    var API_URL = '/api/contact';
+    function handleSubmit(ev) {
       ev.preventDefault();
-      openPageModal('merci');
+      var form = ev.target;
+      var btn = form.querySelector('button[type=submit]');
+      var original = btn.textContent;
+      btn.textContent = 'Envoi...';
+      btn.disabled = true;
+
+      var fd = new FormData(form);
+      var payload = {
+        nom:        fd.get('nom') || '',
+        email:      fd.get('email') || '',
+        entreprise: fd.get('entreprise') || '',
+        budget:     fd.get('budget') || '',
+        projet:     fd.get('projet') || '',
+        website:    fd.get('website') || ''
+      };
+
+      fetch(API_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          openPageModal('merci');
+          form.reset();
+        } else {
+          alert(data.error || 'Erreur lors de l\'envoi.');
+        }
+      })
+      .catch(function() {
+        alert('Erreur réseau. Veuillez réessayer.');
+      })
+      .finally(function() {
+        btn.textContent = original;
+        btn.disabled = false;
+      });
+      return false;
     }
 
     // --- Page Modals (Thank You / 404) ---

@@ -9,4 +9,4 @@ Disallow: /googledacbd4164acedbd8.html
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://evyron.fr/sitemap.xml
+Sitemap: https://www.evyron.fr/sitemap.xml

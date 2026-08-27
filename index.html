@@ -8,7 +8,7 @@
   <meta name="author" content="Evyron">
   <meta name="theme-color" content="#ffffff">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://evyron.fr/">
+  <link rel="canonical" href="https://www.evyron.fr/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- Open Graph -->
@@ -1072,8 +1072,9 @@
       <li><a href="#process">Process</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="/blog/">Blog</a></li>
     </ul>
-    <a href="#contact" class="nv-cta">Projeter</a>
+    <a href="/blog/" class="nv-cta">Blog</a>
     <button class="nv-menu" id="hm" aria-label="Menu">
       <span></span>
       <span></span>
@@ -1088,6 +1089,7 @@
     <a href="#process" onclick="cm()">Process</a>
     <a href="#contact" onclick="cm()">Contact</a>
     <a href="#faq" onclick="cm()">FAQ</a>
+    <a href="/blog/" onclick="cm()">Blog</a>
   </div>
 
   <main>
@@ -1267,26 +1269,26 @@
             <div class="fr">
               <div class="fg">
                 <label>Nom complet</label>
-                <input type="text" name="nom" placeholder="Jean Dupont" required>
+                <input type="text" name="nom" placeholder="Jean Dupont" maxlength="100" required>
               </div>
               <div class="fg">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="jean@entreprise.com" required>
+                <input type="email" name="email" placeholder="jean@entreprise.com" maxlength="254" required>
               </div>
             </div>
             <div class="fr">
               <div class="fg">
                 <label>Entreprise</label>
-                <input type="text" name="entreprise" placeholder="Votre entreprise">
+                <input type="text" name="entreprise" placeholder="Votre entreprise" maxlength="150">
               </div>
               <div class="fg">
                 <label>Budget estimé (à partir de 490 €)</label>
-                <input type="number" name="budget" min="490" step="10" placeholder="490 €">
+                <input type="number" name="budget" min="490" step="10" placeholder="490 €" maxlength="20">
               </div>
             </div>
             <div class="fg">
               <label>Décrivez votre projet</label>
-              <textarea name="projet" placeholder="Parlez-nous de votre projet..." required></textarea>
+              <textarea name="projet" placeholder="Parlez-nous de votre projet..." maxlength="5000" required></textarea>
             </div>
             <div class="consent">
               <input type="checkbox" id="rgpd" required>
@@ -1312,6 +1314,7 @@
         <a href="#about">À propos</a>
         <a href="#contact">Contact</a>
         <a href="#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
       </div>
       <div class="ft-legal">
         <a href="#" onclick="openLegal('mentions')">Mentions légales</a>

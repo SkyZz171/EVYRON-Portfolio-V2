@@ -614,6 +614,20 @@
       line-height: 1.8;
       font-weight: 300;
       margin-top: 1rem;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .4s ease, opacity .3s ease, margin .3s ease;
+    }
+    .faq-item[open] p {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 1rem;
+      animation: faqSlideDown .4s ease forwards;
+    }
+    @keyframes faqSlideDown {
+      0% { opacity: 0; transform: translateY(-8px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Contact --- */
@@ -701,6 +715,14 @@
     .fg input:focus, .fg textarea:focus, .fg select:focus {
       border-color: var(--tx);
     }
+
+    /* number input no spinner for budget */
+    .fg input[type="number"]::-webkit-outer-spin-button,
+    .fg input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .fg input[type="number"] { -moz-appearance: textfield; }
 
     .fg textarea { resize: vertical; min-height: 100px; }
 
@@ -1484,6 +1506,25 @@
     function cm() {
       document.getElementById("mm").classList.remove("act");
     }
+
+    // --- FAQ Accordion Animation ---
+    document.querySelectorAll('.faq-item summary').forEach(function(summary) {
+      summary.addEventListener('click', function(e) {
+        var item = this.parentElement;
+        var content = item.querySelector('p');
+        // Close other items
+        document.querySelectorAll('.faq-item[open]').forEach(function(other) {
+          if (other !== item) other.removeAttribute('open');
+        });
+        // Animate open/close
+        if (item.hasAttribute('open')) {
+          content.style.maxHeight = '0';
+          content.style.opacity = '0';
+          setTimeout(function() { item.removeAttribute('open'); }, 350);
+          e.preventDefault();
+        }
+      });
+    });
 
     // --- Scroll Reveal ---
     var rv = document.querySelectorAll(".rv");

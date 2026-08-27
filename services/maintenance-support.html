@@ -76,6 +76,7 @@
   <footer><div class="ft-c"><div class="ft-logo">Evyron</div><div class="ft-links"><a href="../index.html#services">Services</a><a href="../index.html#about">À propos</a><a href="../index.html#contact">Contact</a><a href="../blog/">Blog</a></div><div class="ft-legal"><a href="../mentions-legales.html">Mentions légales</a><a href="../politique-de-confidentialite.html">Confidentialité</a><a href="../cgv.html">CGV</a><a href="../politique-de-cookies.html">Cookies</a></div></div><div class="ft-btm"><p>&copy; 2026 Evyron. Tous droits réservés.</p></div></footer>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      if (typeof anime === "undefined") return;
       // Hero entrance
       anime({ targets: ".page-hero .tag", opacity: [0,1], translateY: [20,0], duration: 700, delay: 200, easing: "easeOutCubic" });
       anime({ targets: ".page-hero h1", opacity: [0,1], translateY: [30,0], duration: 800, delay: 400, easing: "easeOutCubic" });
@@ -90,7 +91,7 @@
         });
       }, { threshold: 0.1 });
       document.querySelectorAll(".sec, .features, .cta-section").forEach(function(el) {
-        el.style.opacity = "0"; el.style.transform = "translateY(25px)";
+        el.style.opacity = "0";
         obs.observe(el);
       });
       // Feature items stagger

@@ -158,6 +158,9 @@
   <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc"></script>
 
+  <!-- anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap">
@@ -196,16 +199,9 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* --- Animations --- */
-    @keyframes fu {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes lineGrow {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
+    /* --- Animations (anime.js driven) --- */
+    .rv { opacity: 0; transform: translateY(25px); }
+    .rv.vis { opacity: 1; transform: translateY(0); }
 
     /* --- Navigation --- */
     nav {
@@ -344,7 +340,7 @@
       text-transform: uppercase;
       letter-spacing: .15em;
       margin-bottom: 2rem;
-      animation: fu .8s;
+
     }
 
     .h-content h1 {
@@ -354,7 +350,7 @@
       line-height: 1.1;
       margin-bottom: 2rem;
       letter-spacing: -.02em;
-      animation: fu .8s .1s both;
+
     }
 
     .h-content h1 em {
@@ -367,7 +363,7 @@
       color: var(--tx2);
       max-width: 500px;
       margin: 0 auto 3.5rem;
-      animation: fu .8s .2s both;
+
       line-height: 1.8;
       font-weight: 300;
     }
@@ -377,7 +373,7 @@
       height: 1px;
       background: var(--tx);
       margin: 0 auto 3.5rem;
-      animation: lineGrow .8s .3s both;
+
       transform-origin: left;
     }
 
@@ -623,11 +619,6 @@
       max-height: 300px;
       opacity: 1;
       margin-top: 1rem;
-      animation: faqSlideDown .4s ease forwards;
-    }
-    @keyframes faqSlideDown {
-      0% { opacity: 0; transform: translateY(-8px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Contact --- */
@@ -846,7 +837,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
-      animation: fu .5s;
+
     }
 
     .cookie-banner.hidden { display: none; }
@@ -903,7 +894,7 @@
       z-index: 400;
       background: var(--bg);
       overflow-y: auto;
-      animation: fu .3s;
+
     }
     .modal.active { display: block; }
 
@@ -1026,17 +1017,7 @@
     }
     .modal-page .modal-link:hover { opacity: .5; }
 
-    /* --- Reveal Animation --- */
-    .rv {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: all .8s cubic-bezier(.16, 1, .3, 1);
-    }
-
-    .rv.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* --- Reveal Animation (anime.js) --- */
 
     /* --- Responsive --- */
     @media (max-width: 900px) {
@@ -1510,36 +1491,107 @@
       document.getElementById("mm").classList.remove("act");
     }
 
-    // --- FAQ Accordion Animation ---
+    // --- anime.js: FAQ Accordion ---
     document.querySelectorAll('.faq-item summary').forEach(function(summary) {
       summary.addEventListener('click', function(e) {
         var item = this.parentElement;
         var content = item.querySelector('p');
-        // Close other items
+        // Close other items with animation
         document.querySelectorAll('.faq-item[open]').forEach(function(other) {
-          if (other !== item) other.removeAttribute('open');
+          if (other !== item) {
+            var otherContent = other.querySelector('p');
+            anime({
+              targets: otherContent,
+              maxHeight: ['300px', '0px'],
+              opacity: [1, 0],
+              duration: 300,
+              easing: 'easeOutCubic',
+              complete: function() { other.removeAttribute('open'); }
+            });
+          }
         });
         // Animate open/close
         if (item.hasAttribute('open')) {
-          content.style.maxHeight = '0';
-          content.style.opacity = '0';
-          setTimeout(function() { item.removeAttribute('open'); }, 350);
+          anime({
+            targets: content,
+            maxHeight: ['300px', '0px'],
+            opacity: [1, 0],
+            translateY: [0, -8],
+            duration: 350,
+            easing: 'easeOutCubic',
+            complete: function() { item.removeAttribute('open'); }
+          });
           e.preventDefault();
+        } else {
+          // Animate opening
+          anime({
+            targets: content,
+            maxHeight: ['0px', '300px'],
+            opacity: [0, 1],
+            translateY: [-8, 0],
+            duration: 400,
+            delay: 50,
+            easing: 'easeOutCubic'
+          });
         }
       });
     });
 
-    // --- Scroll Reveal ---
-    var rv = document.querySelectorAll(".rv");
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("vis");
-          obs.unobserve(entry.target);
-        }
+    // --- anime.js: Hero Entrance ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hero staggered entrance
+      anime({
+        targets: '.h-tag',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        duration: 800,
+        delay: 200,
+        easing: 'easeOutCubic'
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
-    rv.forEach(function (el) { obs.observe(el); });
+      anime({
+        targets: '.h-content h1',
+        opacity: [0, 1],
+        translateY: [40, 0],
+        duration: 900,
+        delay: 400,
+        easing: 'easeOutCubic'
+      });
+      anime({
+        targets: '.h-line',
+        scaleX: [0, 1],
+        duration: 800,
+        delay: 700,
+        easing: 'easeOutCubic'
+      });
+      anime({
+        targets: '.h-sub',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        delay: 900,
+        easing: 'easeOutCubic'
+      });
+
+      // Scroll Reveal with anime.js
+      var rv = document.querySelectorAll('.rv');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            anime({
+              targets: entry.target,
+              opacity: [0, 1],
+              translateY: [25, 0],
+              duration: 800,
+              delay: 100,
+              easing: 'easeOutCubic'
+            });
+            entry.target.classList.add('vis');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+      rv.forEach(function(el) { obs.observe(el); });
+    });
 
     // --- Form Submit (API backend) ---
     var API_URL = '/api/contact';
@@ -1619,18 +1671,69 @@
       document.body.style.overflow = "";
     }
 
-    // --- Cookie Banner ---
+    // --- Cookie Banner (anime.js) ---
     if (!localStorage.getItem("rgpd")) {
-      document.getElementById("cb").classList.remove("hidden");
+      var cb = document.getElementById("cb");
+      cb.classList.remove("hidden");
+      anime({
+        targets: cb,
+        translateY: [60, 0],
+        opacity: [0, 1],
+        duration: 600,
+        delay: 2000,
+        easing: 'easeOutCubic'
+      });
     }
     function ac() {
       localStorage.setItem("rgpd", "accepted");
-      document.getElementById("cb").classList.add("hidden");
+      anime({
+        targets: '#cb',
+        translateY: [0, 60],
+        opacity: [1, 0],
+        duration: 400,
+        easing: 'easeInCubic',
+        complete: function() { document.getElementById('cb').classList.add('hidden'); }
+      });
       gtag('consent', 'update', { analytics_storage: 'granted' });
     }
     function dc() {
       localStorage.setItem("rgpd", "refused");
-      document.getElementById("cb").classList.add("hidden");
+      anime({
+        targets: '#cb',
+        translateY: [0, 60],
+        opacity: [1, 0],
+        duration: 400,
+        easing: 'easeInCubic',
+        complete: function() { document.getElementById('cb').classList.add('hidden'); }
+      });
+    }
+
+    // --- anime.js: Modal Animations ---
+    function openPageModal(page) {
+      var modal = document.getElementById('lp-' + page);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      anime({
+        targets: modal.querySelector('.modal-page-content'),
+        opacity: [0, 1],
+        translateY: [30, 0],
+        scale: [0.95, 1],
+        duration: 500,
+        easing: 'easeOutCubic'
+      });
+    }
+    function openLegal(page) {
+      var modal = document.getElementById('lp-' + page);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      anime({
+        targets: modal.querySelector('.modal-inner'),
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 400,
+        delay: 100,
+        easing: 'easeOutCubic'
+      });
     }
   </script>
 </body>

@@ -129,6 +129,8 @@
       nav { padding: 1rem 1.5rem; }
     }
   </style>
+  <!-- anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
 </head>
 <body>
   <nav>
@@ -255,5 +257,39 @@
     </div>
     <div class="ft-btm"><p>&copy; 2026 Evyron. Tous droits réservés.</p></div>
   </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Hero entrance
+      anime({ targets: ".page-hero .tag", opacity: [0,1], translateY: [20,0], duration: 700, delay: 200, easing: "easeOutCubic" });
+      anime({ targets: ".page-hero h1", opacity: [0,1], translateY: [30,0], duration: 800, delay: 400, easing: "easeOutCubic" });
+      anime({ targets: ".page-hero p", opacity: [0,1], translateY: [15,0], duration: 700, delay: 600, easing: "easeOutCubic" });
+      // Section reveals
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            anime({ targets: entry.target, opacity: [0,1], translateY: [25,0], duration: 700, easing: "easeOutCubic" });
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".sec, .features, .cta-section").forEach(function(el) {
+        el.style.opacity = "0"; el.style.transform = "translateY(25px)";
+        obs.observe(el);
+      });
+      // Feature items stagger
+      var feats = document.querySelectorAll(".feat");
+      if (feats.length) {
+        var featObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              anime({ targets: feats, opacity: [0,1], translateY: [20,0], duration: 600, delay: anime.stagger(100), easing: "easeOutCubic" });
+              featObs.disconnect();
+            }
+          });
+        }, { threshold: 0.1 });
+        featObs.observe(feats[0]);
+      }
+    });
+  </script>
 </body>
 </html>

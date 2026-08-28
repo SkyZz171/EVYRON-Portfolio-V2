@@ -1,14 +1,15 @@
-# Evyron — Agence de Création Web Sur Mesure
+# Evyron — Agence web spécialisée création, refonte et SEO local
 
-> Evyron est une agence de création web basée à Paris, spécialisée dans la conception de sites web performants, sur mesure et optimisés SEO. Nous créons des expériences digitales uniques pour propulser les entreprises vers le succès.
+> Evyron conçoit des sites modernes, rapides et optimisés pour aider les entreprises à mieux présenter leur activité, gagner en visibilité et faciliter la prise de contact.
 
 ## Services
 
-- **Design UI/UX** — Interfaces intuitives et esthétiques (Figma, Adobe XD)
-- **Développement Web** — Sites vitrines, e-commerce, applications (React, Next.js, Node)
-- **SEO & Performance** — Référencement naturel et optimisation Core Web Vitals
-- **Maintenance & Support** — Suivi post-lancement, sécurité, monitoring
-- **Stratégie Digitale** — Conseil stratégique, audit digital, stratégie de contenu
+- **Création de site web** — Site professionnel adapté à l'entreprise, design sur mesure, responsive, optimisé SEO
+- **Refonte** — Modernisation d'un site existant : design, structure, responsive, performance, SEO
+- **SEO** — Optimisation technique et éditoriale pour le référencement naturel
+- **SEO local** — Optimisation de la visibilité locale : structure, données structurées, contenu ciblé
+- **Maintenance** — Corrections, mises à jour de sécurité et évolutions après mise en ligne
+- **Performance** — Optimisation des images, scripts, styles et structure
 
 ## Contact
 
@@ -20,14 +21,22 @@
 ## Pages importantes
 
 - Accueil : https://www.evyron.fr/
+- Création de site web : https://www.evyron.fr/creation-site-web
+- Refonte de site web : https://www.evyron.fr/refonte-site-web
+- SEO local : https://www.evyron.fr/seo-local
+- Création site web Perreux-sur-Marne : https://www.evyron.fr/creation-site-web-perreux-sur-marne
+- Création site web Nogent-sur-Marne : https://www.evyron.fr/creation-site-web-nogent-sur-marne
 - Services Design UI/UX : https://www.evyron.fr/services/design-ui-ux.html
 - Services Développement Web : https://www.evyron.fr/services/developpement-web.html
 - Services SEO & Performance : https://www.evyron.fr/services/seo-performance.html
 - Services Maintenance : https://www.evyron.fr/services/maintenance-support.html
-- Services Stratégie Digitale : https://www.evyron.fr/services/strategie-digitale.html
 - Blog : https://www.evyron.fr/blog/
 - Contact : https://www.evyron.fr/#contact
 
 ## À propos
 
-Evyron est née d'un constat simple : la plupart des sites web sont construits à l'envers. Nous faisons l'inverse. Chaque projet commence par une question : quel problème ce site doit-il résoudre ? La réponse dicte tout le reste.
+Evyron est une agence récemment lancée avec une volonté simple : construire chaque projet avec un niveau d'exigence élevé, une approche claire et une attention particulière portée à l'expérience utilisateur et à la performance. Nous travaillons avec des artisans, commerces, indépendants, PME et entreprises locales.
+
+## Positionnement
+
+Evyron ne prétend pas être une grande agence internationale. La crédibilité vient de la qualité du site, des projets conceptuels, de la méthodologie, de la qualité rédactionnelle, des démonstrations techniques et de la transparence.

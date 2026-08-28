@@ -10,3 +10,12 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Dependencies
+node_modules/
+
+# Test results
+test-results/
+
+# Build artifacts
+*.cjs.bak

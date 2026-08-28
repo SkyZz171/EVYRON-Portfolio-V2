@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@playwright/test": "^1.62.1",
+    "playwright": "^1.62.1",
     "resend": "^4.0.0"
   },
   "devDependencies": {

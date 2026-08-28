@@ -7,7 +7,18 @@ const TO = process.env.CONTACT_EMAIL || 'contact@evyron.fr';
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 
 // --- Input limits (DoS prevention) ---
-const MAX_LENGTHS = { nom: 100, email: 254, entreprise: 150, budget: 20, projet: 5000 };
+const MAX_LENGTHS = {
+  prenom: 50,
+  nom: 50,
+  email: 254,
+  telephone: 20,
+  entreprise: 150,
+  site_actuel: 200,
+  type_projet: 50,
+  budget: 50,
+  objectif: 200,
+  projet: 5000
+};
 
 /** Sanitize user input: strip line breaks & control chars to prevent email header injection */
 function sanitize(str) {
@@ -47,19 +58,24 @@ export default async function handler(req, res) {
   const raw = req.body || {};
 
   // --- Sanitize all string inputs ---
-  const nom      = sanitize(raw.nom);
-  const email    = sanitize(raw.email);
-  const entreprise = sanitize(raw.entreprise);
-  const budget   = sanitize(raw.budget);
-  const projet   = sanitize(raw.projet);
-  const website  = sanitize(raw.website);
+  const prenom      = sanitize(raw.prenom);
+  const nom         = sanitize(raw.nom);
+  const email       = sanitize(raw.email);
+  const telephone   = sanitize(raw.telephone);
+  const entreprise  = sanitize(raw.entreprise);
+  const site_actuel = sanitize(raw.site_actuel);
+  const type_projet = sanitize(raw.type_projet);
+  const budget      = sanitize(raw.budget);
+  const objectif    = sanitize(raw.objectif);
+  const projet      = sanitize(raw.projet);
+  const website     = sanitize(raw.website);
   const recaptchaToken = sanitize(raw.recaptchaToken);
 
   // --- Validate required fields ---
-  if (!nom || !email || !projet) {
+  if (!prenom || !nom || !email || !projet) {
     return res.status(422).json({
       ok: false,
-      error: 'Les champs nom, email et description du projet sont requis.',
+      error: 'Les champs prénom, nom, email et description du projet sont requis.',
     });
   }
 
@@ -71,7 +87,7 @@ export default async function handler(req, res) {
 
   // --- Enforce input length limits ---
   for (const [field, max] of Object.entries(MAX_LENGTHS)) {
-    if (raw[field] && raw[field].length > max) {
+    if (raw[field] && typeof raw[field] === 'string' && raw[field].length > max) {
       return res.status(422).json({
         ok: false,
         error: `Le champ ${field} ne peut pas dépasser ${max} caractères.`,
@@ -114,10 +130,15 @@ export default async function handler(req, res) {
     'Nouveau message depuis evyron.fr',
     '─'.repeat(40),
     '',
-    `Nom complet  : ${nom}`,
+    `Prénom       : ${prenom}`,
+    `Nom          : ${nom}`,
     `Email        : ${email}`,
-    entreprise ? `Entreprise   : ${entreprise}` : null,
-    budget ? `Budget       : ${budget} €` : null,
+    telephone    ? `Téléphone    : ${telephone}` : null,
+    entreprise   ? `Entreprise   : ${entreprise}` : null,
+    site_actuel  ? `Site actuel  : ${site_actuel}` : null,
+    type_projet  ? `Type projet  : ${type_projet}` : null,
+    budget       ? `Budget       : ${budget}` : null,
+    objectif     ? `Objectif(s)  : ${objectif}` : null,
     '',
     '─'.repeat(40),
     '',
@@ -134,7 +155,7 @@ export default async function handler(req, res) {
       from: 'Evyron Contact <contact@evyron.fr>',
       to: TO,
       replyTo: email,
-      subject: 'Nouveau message depuis evyron.fr',
+      subject: `Nouveau message — ${prenom} ${nom}${entreprise ? ` (${entreprise})` : ''}`,
       text: lines,
     });
 

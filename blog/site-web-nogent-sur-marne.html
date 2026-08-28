@@ -125,7 +125,7 @@ footer { border-top: 1px solid var(--br); padding: 3rem; max-width: 1200px; marg
       <li><a href="/blog/">Blog</a></li>
     </ul>
     <a href="/#contact" class="nv-cta">Devis gratuit</a>
-    <button class="nv-menu" id="hm" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    <button class="nv-menu" id="hm" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
   <div class="mm" id="mm">
     <button class="mm-x" id="mx" aria-label="Fermer le menu">&times;</button>
@@ -241,8 +241,8 @@ footer { border-top: 1px solid var(--br); padding: 3rem; max-width: 1200px; marg
 
   <script>
     document.getElementById("hm").addEventListener("click", function() { document.getElementById("mm").classList.add("act"); document.body.style.overflow = "hidden"; });
-    document.getElementById("mx").addEventListener("click", function() { document.getElementById("mm").classList.remove("act"); document.body.style.overflow = ""; });
-    function cm() { document.getElementById("mm").classList.remove("act"); document.body.style.overflow = ""; }
+    document.getElementById("mx").addEventListener("click", function() { document.getElementById("mm").classList.remove("act"); document.getElementById('hm').setAttribute('aria-expanded', 'false'); document.body.style.overflow = ""; });
+    function cm() { document.getElementById('hm').setAttribute('aria-expanded', 'false'); document.getElementById("mm").classList.remove("act"); document.body.style.overflow = ""; }
     document.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() { document.querySelector(".article-hero .tag").classList.add("anim"); }, 150);
       setTimeout(function() { document.querySelector(".article-hero h1").classList.add("anim"); }, 300);

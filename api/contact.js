@@ -17,6 +17,7 @@ const MAX_LENGTHS = {
   type_projet: 50,
   budget: 50,
   objectif: 200,
+  delai: 50,
   projet: 5000
 };
 
@@ -68,6 +69,7 @@ export default async function handler(req, res) {
   const budget      = sanitize(raw.budget);
   const objectif    = sanitize(raw.objectif);
   const projet      = sanitize(raw.projet);
+  const delai       = sanitize(raw.delai);
   const website     = sanitize(raw.website);
   const recaptchaToken = sanitize(raw.recaptchaToken);
 
@@ -139,6 +141,7 @@ export default async function handler(req, res) {
     type_projet  ? `Type projet  : ${type_projet}` : null,
     budget       ? `Budget       : ${budget}` : null,
     objectif     ? `Objectif(s)  : ${objectif}` : null,
+    delai        ? `Délai        : ${delai}` : null,
     '',
     '─'.repeat(40),
     '',

@@ -1,12 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /mentions-legales.html
-Disallow: /politique-de-confidentialite.html
-Disallow: /cgv.html
-Disallow: /politique-de-cookies.html
+Disallow: /api/
+Disallow: /app/
 Disallow: /googledacbd4164acedbd8.html
-
-User-agent: Googlebot
-Allow: /
+Disallow: /BingSiteAuth.xml
 
 Sitemap: https://www.evyron.fr/sitemap.xml

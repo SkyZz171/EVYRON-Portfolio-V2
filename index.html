@@ -255,7 +255,7 @@
 
     /* === Animations === */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 1; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes lineGrow {
@@ -263,14 +263,14 @@
       to { transform: scaleX(1); }
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
+      from { opacity: 1; }
       to { opacity: 1; }
     }
 
-    .rv { opacity: 0; transform: translateY(25px); transition: all .7s cubic-bezier(.16,1,.3,1); }
+    .rv { opacity: 1; transform: none; transition: all .7s cubic-bezier(.16,1,.3,1); }
     .rv.vis { opacity: 1; transform: translateY(0); }
 
-    .h-tag, .h-content h1, .h-sub, .h-features, .h-cta { opacity: 0; }
+    .h-tag, .h-content h1, .h-sub, .h-features, .h-cta { opacity: 1; }
     .h-tag.anim, .h-content h1.anim, .h-sub.anim, .h-features.anim, .h-cta.anim {
       animation: fadeUp .8s ease-out forwards;
     }
@@ -2281,7 +2281,6 @@
           btn.textContent = original;
           btn.disabled = false;
         });
-      });
       return false;
     }
 

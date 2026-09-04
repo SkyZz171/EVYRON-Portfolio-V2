@@ -103,13 +103,13 @@ footer { border-top: 1px solid var(--br); padding: 3rem; max-width: 1200px; marg
 .ft-legal a { font-size: .7rem; color: var(--mu); text-transform: uppercase; letter-spacing: .05em; transition: color .3s; }
 .ft-legal a:hover { color: var(--tx); }
 .ft-btm { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--br); color: var(--mu); font-size: .75rem; font-weight: 300; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.article-hero .tag, .article-hero h1, .article-hero .meta { opacity: 0; }
+@keyframes fadeUp { from { opacity: 1; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.article-hero .tag, .article-hero h1, .article-hero .meta { opacity: 1; }
 .article-hero .tag.anim, .article-hero h1.anim, .article-hero .meta.anim { animation: fadeUp .7s ease-out forwards; }
 .article-hero .tag.anim { animation-delay: .15s; }
 .article-hero h1.anim { animation-delay: .3s; }
 .article-hero .meta.anim { animation-delay: .45s; }
-.article, .cta-box { opacity: 0; transform: translateY(25px); transition: all .7s cubic-bezier(.16,1,.3,1); }
+.article, .cta-box { opacity: 1; transform: none; transition: all .7s cubic-bezier(.16,1,.3,1); }
 .article.vis, .cta-box.vis { opacity: 1; transform: translateY(0); }
 @media (max-width: 900px) { .nv-links, .nv-cta { display: none; } .nv-menu { display: block; } }
 @media (max-width: 500px) { .article-hero { padding: 7rem 1.5rem 2rem; } .article { padding: 1.5rem 1.5rem 4rem; } nav { padding: 1rem 1.5rem; } .breadcrumb { padding: 7rem 1.5rem 0; } }

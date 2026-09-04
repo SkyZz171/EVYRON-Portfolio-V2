@@ -120,13 +120,13 @@
     .ft-legal a:hover { color: var(--tx); }
     .ft-btm { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--br); color: var(--mu); font-size: .75rem; font-weight: 300; }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .page-hero .tag, .page-hero h1, .page-hero p { opacity: 0; }
+    @keyframes fadeUp { from { opacity: 1; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .page-hero .tag, .page-hero h1, .page-hero p { opacity: 1; }
     .page-hero .tag.anim, .page-hero h1.anim, .page-hero p.anim { animation: fadeUp .7s ease-out forwards; }
     .page-hero .tag.anim { animation-delay: .15s; }
     .page-hero h1.anim { animation-delay: .3s; }
     .page-hero p.anim { animation-delay: .45s; }
-    .sec, .features, .cta-section { opacity: 0; transform: translateY(25px); transition: all .7s cubic-bezier(.16,1,.3,1); }
+    .sec, .features, .cta-section { opacity: 1; transform: none; transition: all .7s cubic-bezier(.16,1,.3,1); }
     .sec.vis, .features.vis, .cta-section.vis { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) { .nv-links, .nv-cta { display: none; } .nv-menu { display: block; } .features { grid-template-columns: 1fr; } .feat { border-right: none !important; } }

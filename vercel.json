@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(js|css|png|jpg|jpeg|webp|svg|ico|xml))",
+      "source": "/(.*).(js|css|png|jpg|jpeg|webp|svg|ico|xml)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]

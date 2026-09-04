@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "npx --yes serve . -l 3000",
-    "test": "npm run test:api && npx playwright test",
-    "test:api": "node --test tests/contact.test.cjs"
+    "test": "npm run test:api && npm run test:seo && npx playwright test",
+    "test:api": "node --test tests/contact.test.cjs",
+    "test:seo": "node --test tests/seo.test.cjs"
   },
   "dependencies": {
     "@playwright/test": "^1.62.1",

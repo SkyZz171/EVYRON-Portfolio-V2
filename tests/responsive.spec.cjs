@@ -15,6 +15,7 @@ const VIEWPORTS = [
 
 const PAGES = [
   { path: '/', name: 'Homepage' },
+  { path: '/agence-web-france', name: 'Agence web France' },
   { path: '/creation-site-web', name: 'Creation site web' },
   { path: '/refonte-site-web', name: 'Refonte site web' },
   { path: '/seo-local', name: 'SEO local' },

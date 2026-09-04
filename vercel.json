@@ -3,8 +3,12 @@
     { "source": "/creation-site-web", "destination": "/creation-site-web.html" },
     { "source": "/refonte-site-web", "destination": "/refonte-site-web.html" },
     { "source": "/seo-local", "destination": "/seo-local.html" },
+    { "source": "/agence-web-france", "destination": "/agence-web-france.html" },
     { "source": "/creation-site-web-perreux-sur-marne", "destination": "/creation-site-web-perreux-sur-marne.html" },
     { "source": "/creation-site-web-nogent-sur-marne", "destination": "/creation-site-web-nogent-sur-marne.html" }
+  ],
+  "redirects": [
+    { "source": "/agence-web-france.html", "destination": "/agence-web-france", "permanent": true }
   ],
   "headers": [
     {

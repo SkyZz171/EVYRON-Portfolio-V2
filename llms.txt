@@ -1,6 +1,6 @@
-# Evyron — Agence web spécialisée création, refonte et SEO local
+# Evyron — Agence web en France
 
-> Evyron conçoit des sites modernes, rapides et optimisés pour aider les entreprises à mieux présenter leur activité, gagner en visibilité et faciliter la prise de contact.
+> Evyron est une agence web française spécialisée dans la création, la refonte et le SEO de sites web pour entreprises, indépendants, artisans et professionnels, partout en France.
 
 ## Services
 
@@ -10,10 +10,12 @@
 - **SEO local** — Optimisation de la visibilité locale : structure, données structurées, contenu ciblé
 - **Maintenance** — Corrections, mises à jour de sécurité et évolutions après mise en ligne
 - **Performance** — Optimisation des images, scripts, styles et structure
+- **Agence web en France** — Accompagnement à distance pour les projets partout en France
 
 ## Contact
 
 - Site : https://www.evyron.fr
+- Agence web en France : https://www.evyron.fr/agence-web-france
 - Email : contact@evyron.fr
 - Téléphone : 07 66 79 22 67
 - Localisation : Paris, France
@@ -21,6 +23,7 @@
 ## Pages importantes
 
 - Accueil : https://www.evyron.fr/
+- Agence web en France : https://www.evyron.fr/agence-web-france
 - Création de site web : https://www.evyron.fr/creation-site-web
 - Refonte de site web : https://www.evyron.fr/refonte-site-web
 - SEO local : https://www.evyron.fr/seo-local
@@ -35,7 +38,7 @@
 
 ## À propos
 
-Evyron est une agence récemment lancée avec une volonté simple : construire chaque projet avec un niveau d'exigence élevé, une approche claire et une attention particulière portée à l'expérience utilisateur et à la performance. Nous travaillons avec des artisans, commerces, indépendants, PME et entreprises locales.
+Evyron est une agence web française récemment lancée avec une volonté simple : construire chaque projet avec un niveau d'exigence élevé, une approche claire et une attention particulière portée à l'expérience utilisateur et à la performance. Nous travaillons à distance avec des artisans, commerces, indépendants, PME et entreprises partout en France.
 
 ## Positionnement
 

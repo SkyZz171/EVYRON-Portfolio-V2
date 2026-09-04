@@ -189,18 +189,23 @@
 
   <title>Evyron — Création de sites web, refonte et SEO local</title>
 
-  <!-- Google Analytics (consent mode v2) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JBZJ6QGD5"></script>
+  <!-- Consent mode v2 : les scripts tiers sont chargés uniquement après accord ou action. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', { analytics_storage: 'denied' });
     gtag('js', new Date());
-    gtag('config', 'G-0JBZJ6QGD5', { anonymize_ip: true });
-  </script>
 
-  <!-- reCAPTCHA v3 -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc"></script>
+    function loadAnalytics() {
+      if (window.analyticsLoaded) return;
+      window.analyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0JBZJ6QGD5';
+      document.head.appendChild(script);
+      gtag('config', 'G-0JBZJ6QGD5', { anonymize_ip: true });
+    }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -613,91 +618,6 @@
       color: var(--tx2);
       font-weight: 300;
       line-height: 1.7;
-    }
-
-    /* === Portfolio / Concepts === */
-    .concepts-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    .concept-card {
-      border: 1px solid var(--br);
-      transition: all .4s;
-      overflow: hidden;
-    }
-    .concept-card:hover { border-color: #ccc; }
-    .concept-img {
-      width: 100%;
-      height: 240px;
-      background: var(--br2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-    .concept-img .concept-placeholder {
-      font-family: Playfair Display, serif;
-      font-size: 1.5rem;
-      color: var(--mu);
-      font-style: italic;
-    }
-    .concept-badge {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      font-size: .6rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      background: var(--tx);
-      color: var(--bg);
-      padding: .3rem .7rem;
-    }
-    .concept-body {
-      padding: 2rem;
-    }
-    .concept-meta {
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-      margin-bottom: .8rem;
-    }
-    .concept-sector {
-      font-size: .65rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--mu);
-    }
-    .concept-body h3 {
-      font-family: Playfair Display, serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: .6rem;
-      letter-spacing: -.01em;
-    }
-    .concept-body p {
-      font-size: .85rem;
-      color: var(--tx2);
-      font-weight: 300;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .concept-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-    }
-    .concept-tags span {
-      font-size: .65rem;
-      font-weight: 500;
-      color: var(--mu);
-      border: 1px solid var(--br);
-      padding: .25rem .6rem;
-      text-transform: uppercase;
-      letter-spacing: .05em;
     }
 
     /* === Services === */
@@ -1435,7 +1355,6 @@
       .young-r { grid-template-columns: 1fr; }
       .young-arg { border-left: none !important; border-right: none !important; border-bottom: 1px solid var(--br) !important; }
       .young-arg:last-child { border-bottom: none !important; }
-      .concepts-grid { grid-template-columns: 1fr; }
       .value-grid { grid-template-columns: repeat(2, 1fr); }
       .val-item:nth-child(2) { border-right: none; }
       .val-item:nth-child(1), .val-item:nth-child(2) { border-bottom: 1px solid var(--br); }
@@ -1475,7 +1394,6 @@
     <a href="/" class="nv-logo" aria-label="Evyron - Accueil">Evyron</a>
     <ul class="nv-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="/blog/">Blog</a></li>
@@ -1491,7 +1409,6 @@
   <div class="mm" id="mm">
     <button class="mm-x" id="mx" aria-label="Fermer le menu">&times;</button>
     <a href="#services" onclick="cm()">Services</a>
-    <a href="#realisations" onclick="cm()">Réalisations</a>
     <a href="#process" onclick="cm()">Process</a>
     <a href="#faq" onclick="cm()">FAQ</a>
     <a href="#contact" onclick="cm()">Contact</a>
@@ -1566,137 +1483,6 @@
             <p>Le site doit pouvoir évoluer avec l'entreprise sans être entièrement refait.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== CONCEPTS / ÉTUDES DE CAS CONCEPTUELLES ===== -->
-    <section class="sec" id="realisations" aria-label="Études de cas conceptuelles">
-      <div class="sec-h rv">
-        <div class="sec-nm">Études de cas</div>
-        <h2 class="sec-t">Nos études de cas conceptuelles</h2>
-        <p class="sec-d">Des scénarios imaginaires conçus par Evyron pour démontrer notre approche sur différents marchés. Il ne s'agit pas de vrais clients.</p>
-        <div class="sec-line"></div>
-      </div>
-      <div class="concepts-grid">
-        <!-- Concept 1 — Artisan Menuisier -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Artisan Menuisier</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Artisanat</span>
-            </div>
-            <h3>Concept — Site vitrine pour artisan menuisier</h3>
-            <p>Scénario : un artisan dispose d'un site daté, non responsive, sans visibilité locale. Objectif du concept : créer une vitrine professionnelle qui inspire confiance et facilite la prise de contact.</p>
-            <div class="concept-tags">
-              <span>Responsive</span>
-              <span>SEO local</span>
-              <span>Design sur mesure</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Concept 2 — Rénovation -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Entreprise de Rénovation</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Rénovation</span>
-            </div>
-            <h3>Redesign conceptuel — Entreprise de rénovation</h3>
-            <p>Scénario : un site existant avec navigation confuse, design peu professionnel et performances médiocres. Objectif du concept : prioriser la clarté de l'offre et la conversion.</p>
-            <div class="concept-tags">
-              <span>Refonte UX</span>
-              <span>Performance</span>
-              <span>Conversion</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Concept 3 — Restaurant -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Restaurant</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Restauration</span>
-            </div>
-            <h3>Concept — Restaurant local</h3>
-            <p>Scénario : un restaurant sans présence web exploitait uniquement les réseaux sociaux. Objectif du concept : un site rapide avec le menu, les horaires et une réservation accessibles.</p>
-            <div class="concept-tags">
-              <span>Mobile-first</span>
-              <span>SEO local</span>
-              <span>Performance</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Concept 4 — Commerce local -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Commerce Local</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Commerce</span>
-            </div>
-            <h3>Redesign conceptuel — Commerce de proximité</h3>
-            <p>Scénario : un commerce local avec un site basique mal référencé. Objectif du concept : mettre en avant l'activité et les produits avec une structure optimisée pour le référencement local.</p>
-            <div class="concept-tags">
-              <span>SEO local</span>
-              <span>Structure SEO</span>
-              <span>Responsive</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Concept 5 — Coach Professionnel -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Coach Professionnel</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Indépendant</span>
-            </div>
-            <h3>Concept — Coach professionnel</h3>
-            <p>Scénario : un coach sans site web utilisait les réseaux sociaux comme seule vitrine. Objectif du concept : une page de présentation claire, un parcours de conversion simple et une crédibilité immédiate.</p>
-            <div class="concept-tags">
-              <span>Design épuré</span>
-              <span>Conversion</span>
-              <span>SEO</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Concept 6 — Vitrier -->
-        <article class="concept-card rv">
-          <div class="concept-img">
-            <span class="concept-badge">Concept</span>
-            <span class="concept-placeholder">Vitrier</span>
-          </div>
-          <div class="concept-body">
-            <div class="concept-meta">
-              <span class="concept-sector">Artisanat</span>
-            </div>
-            <h3>Redesign conceptuel — Vitrier local</h3>
-            <p>Scénario : un vitrier avec un site peu lisible et sans numéro de téléphone visible. Objectif du concept : centrer l'expérience sur l'appel et la prise de contact.</p>
-            <div class="concept-tags">
-              <span>UX prioritaire</span>
-              <span>SEO local</span>
-              <span>Mobile-first</span>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -2046,8 +1832,8 @@
             <div style="position:absolute;left:-9999px" aria-hidden="true">
               <input type="text" name="website" tabindex="-1" autocomplete="off">
             </div>
-            <div class="form-loading" id="form-loading">Envoi en cours...</div>
-            <div class="form-status" id="form-status"></div>
+            <div class="form-loading" id="form-loading" aria-live="polite">Envoi en cours...</div>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
             <button type="submit" class="btn-primary" style="margin-top:.5rem">Envoyer le message</button>
           </form>
         </div>
@@ -2117,8 +1903,7 @@
         <ul>
           <li><a href="/">Accueil</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#realisations">Réalisations</a></li>
-          <li><a href="#process">Process</a></li>
+              <li><a href="#process">Process</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -2385,6 +2170,21 @@
     /* === Form Validation & Submit === */
     var API_URL = '/api/contact';
     var RECAPTCHA_KEY = '6LdHFZotAAAAAPZWcNFh4GvvR_QPtB5WSo45T6mc';
+    var recaptchaPromise;
+
+    function loadRecaptcha() {
+      if (window.grecaptcha) return Promise.resolve(window.grecaptcha);
+      if (recaptchaPromise) return recaptchaPromise;
+      recaptchaPromise = new Promise(function(resolve, reject) {
+        var script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js?render=' + RECAPTCHA_KEY;
+        script.async = true;
+        script.onload = function() { grecaptcha.ready(function() { resolve(grecaptcha); }); };
+        script.onerror = function() { reject(new Error('reCAPTCHA indisponible')); };
+        document.head.appendChild(script);
+      });
+      return recaptchaPromise;
+    }
 
     function showError(id, show) {
       var el = document.getElementById(id);
@@ -2444,8 +2244,9 @@
         recaptchaToken: ''
       };
 
-      grecaptcha.ready(function() {
-        grecaptcha.execute(RECAPTCHA_KEY, {action: 'contact'}).then(function(token) {
+      loadRecaptcha().then(function(recaptcha) {
+        return recaptcha.execute(RECAPTCHA_KEY, {action: 'contact'});
+      }).then(function(token) {
           payload.recaptchaToken = token;
           return fetch(API_URL, {
             method: 'POST',
@@ -2453,7 +2254,10 @@
             headers: { 'Content-Type': 'application/json' }
           });
         })
-        .then(function(r) { return r.json(); })
+        .then(function(r) {
+          if (!r.ok && r.status >= 500) throw new Error('Erreur serveur');
+          return r.json();
+        })
         .then(function(data) {
           document.getElementById('form-loading').classList.remove('show');
           if (data.ok) {
@@ -2515,6 +2319,8 @@
       setTimeout(function() {
         document.getElementById('cb').classList.remove('hidden');
       }, 1500);
+    } else if (localStorage.getItem('rgpd') === 'accepted') {
+      loadAnalytics();
     }
     function ac() {
       localStorage.setItem('rgpd', 'accepted');
@@ -2523,6 +2329,7 @@
       document.getElementById('cb').style.opacity = '0';
       setTimeout(function() { document.getElementById('cb').classList.add('hidden'); }, 300);
       gtag('consent', 'update', { analytics_storage: 'granted' });
+      loadAnalytics();
     }
     function dc() {
       localStorage.setItem('rgpd', 'refused');

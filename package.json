@@ -2,6 +2,11 @@
   "name": "evyron",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "test": "npm run test:api && npx playwright test",
+    "test:api": "node --test tests/contact.test.cjs"
+  },
   "dependencies": {
     "@playwright/test": "^1.62.1",
     "playwright": "^1.62.1",

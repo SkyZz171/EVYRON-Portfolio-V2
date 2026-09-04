@@ -3,6 +3,7 @@ const { defineConfig } = require('@playwright/test');
 
 module.exports = defineConfig({
   testDir: './tests',
+  testMatch: '**/*.spec.cjs',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: 1,
